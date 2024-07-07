@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "656065696557",
+    "project_id": "meetupmate-c55bc",
+    "storage_bucket": "meetupmate-c55bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656065696557:android:7763a0cac286305403b9a4",
+        "android_client_info": {
+          "package_name": "com.example.meetupmate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjhB7o0UogffrEUoJ0iUDFVx8POXrQQoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

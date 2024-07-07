@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Meetup Mate</string>
+    <string name="welcome_message">
+        "Welcome to Meetup Mate\n\n"
+        "Easily plan meetups with your friends\n\n"
+        "Add friends by clicking on the search icon and searching for their username\n\n"
+        "Add meetups and customize your profile by clicking on your profile icon\n\n"
+        "Join meetups by clicking on the 'Join' button of each post and also see who else has joined\n\n"
+        "Created by Jai Joshi"
+    </string>
+</resources>

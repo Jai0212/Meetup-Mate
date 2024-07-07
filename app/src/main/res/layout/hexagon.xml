@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/llHexagon"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginBottom="18dp"
+    android:layout_marginStart="@dimen/ll_hexagon_margin_default"
+    android:background="@android:color/transparent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivHexagon"
+        android:layout_width="@dimen/profile_default"
+        android:layout_height="@dimen/profile_default"
+        android:contentDescription="Profile"
+        android:src="@drawable/placeholder_image"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="3dp"
+        android:padding="4dp"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <TextView
+        android:id="@+id/tvHexagonUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="12sp"
+        android:textColor="@color/blackish">
+    </TextView>
+</LinearLayout>
+
+
+

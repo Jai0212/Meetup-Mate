@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="profile_on_select">80dp</dimen>
+    <dimen name="profile_default">72dp</dimen>
+    <dimen name="ll_hexagon_margin_on_select">7dp</dimen>
+    <dimen name="ll_hexagon_margin_default">10dp</dimen>
+</resources>
