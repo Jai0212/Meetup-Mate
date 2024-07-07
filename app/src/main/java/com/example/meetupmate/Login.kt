@@ -1,7 +1,9 @@
 package com.example.meetupmate
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.provider.ContactsContract.Data
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
@@ -58,7 +60,18 @@ class Login : AppCompatActivity() {
                             if (user.password == edtPassword.text.toString() && edtEMail.text.toString() != "")
                             {
                                 DatabaseManager.initCurrUser(user)
-                                startActivity(Intent(this@Login, MainActivity::class.java))
+
+                                val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
+                                val editor: SharedPreferences.Editor = pref.edit()
+                                editor.putBoolean("flag", true)
+                                editor.putString("email", user.email)
+                                editor.apply()
+
+                                val intent = Intent(this@Login, MainActivity::class.java)
+                                // removes login from backstack
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
+                                finish()
                             }
                             else {
                                 showInvalidDetailsToast()

@@ -3,6 +3,7 @@ package com.example.meetupmate
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -146,6 +147,13 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.mLogout -> {
                 DatabaseManager.initCurrUser(User(email = "", username = "", password = "", profileImage = ""))
+
+                val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
+                val editor: SharedPreferences.Editor = pref.edit()
+                editor.putBoolean("flag", false)
+                editor.putString("email", "")
+                editor.apply()
+
                 startActivity(Intent(this@MainActivity, Login::class.java))
                 true
             }
@@ -164,5 +172,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    // exits app if back pressed
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.meetupmate
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
@@ -70,7 +71,17 @@ class Signup : AppCompatActivity() {
                             DatabaseManager.addNewUser(newUser, this)
                             DatabaseManager.initCurrUser(newUser)
 
-                            startActivity(Intent(this@Signup, MainActivity::class.java))
+                            val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
+                            val editor: SharedPreferences.Editor = pref.edit()
+                            editor.putBoolean("flag", true)
+                            editor.putString("email", edtEMail.text.toString().trim())
+                            editor.apply()
+
+                            val intent = Intent(this@Signup, MainActivity::class.java)
+                            // removes signup from backstack
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                            finish()
                         }
                     }
                 } else {
