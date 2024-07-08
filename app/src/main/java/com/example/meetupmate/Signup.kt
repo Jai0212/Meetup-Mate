@@ -57,13 +57,13 @@ class Signup : AppCompatActivity() {
 
                 if (isValidEmail(edtEMail.text.toString().trim())) {
 
-                    DatabaseManager.userExists(edtEMail.text.toString().trim()) { userExists->
+                    DatabaseManager.userExists(edtEMail.text.toString().trim().lowercase()) { userExists->
                         if (userExists) {
                             showToast("E-mail Already In Use")
                             return@userExists
                         } else {
                             val newUser = User(
-                                edtEMail.text.toString().trim(),
+                                edtEMail.text.toString().trim().lowercase(),
                                 edtUsername.text.toString().trim(),
                                 edtPassword.text.toString().trim(),
                                 "")
@@ -74,7 +74,7 @@ class Signup : AppCompatActivity() {
                             val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
                             val editor: SharedPreferences.Editor = pref.edit()
                             editor.putBoolean("flag", true)
-                            editor.putString("email", edtEMail.text.toString().trim())
+                            editor.putString("email", edtEMail.text.toString().trim().lowercase())
                             editor.apply()
 
                             val intent = Intent(this@Signup, MainActivity::class.java)

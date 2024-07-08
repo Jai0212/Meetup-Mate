@@ -55,10 +55,10 @@ class Profile : AppCompatActivity() {
                     selectedUser = user
                     selectedUser?.let {
 
-                        Glide.with(imgProfileImage.context) // TODO might have to change to getProfileImage
+                        Glide.with(imgProfileImage.context)
                             .load(selectedUser!!.profileImage)
-                            .placeholder(R.drawable.placeholder_image) // while loading
-                            .error(R.drawable.placeholder_image)
+                            .placeholder(R.drawable.profile_icon) // while loading
+                            .error(R.drawable.profile_icon)
                             .into(imgProfileImage)
 
                         DatabaseManager.isFriend(it) { isFriend ->
@@ -149,8 +149,8 @@ class Profile : AppCompatActivity() {
 
                     Glide.with(imgProfileImage.context)
                         .load(imageProfileUri.toString())
-                        .placeholder(R.drawable.placeholder_image) // while loading
-                        .error(R.drawable.placeholder_image)
+                        .placeholder(R.drawable.profile_icon) // while loading
+                        .error(R.drawable.profile_icon)
                         .into(imgProfileImage)
                 }
             }

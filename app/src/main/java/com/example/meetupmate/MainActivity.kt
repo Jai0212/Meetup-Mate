@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
@@ -21,12 +22,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
     private val GALLERY_REQUEST_CODE: Int = 100
     private lateinit var addPostImage: ImageView
-    private lateinit var imageUri: Uri
+    private var imageUri: Uri? = null
 
     @SuppressLint("UseSupportActionBar")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +52,13 @@ class MainActivity : AppCompatActivity() {
 
         val imgProfileIcon: ImageView = findViewById(R.id.imgProfileIcon)
 
-//        imgProfileIcon.setImageURI(Uri.parse(DatabaseManager.currUser.profileImage))
-//        DatabaseManager.loadImageIntoImageView(DatabaseManager.currUser.profileImage, imgProfileIcon)
         DatabaseManager.getProfileImage {
             if (it != null) {
-                DatabaseManager.loadImageIntoImageView(it, imgProfileIcon)
+                Glide.with(imgProfileIcon.context)
+                    .load(it)
+                    .placeholder(R.drawable.profile_icon)
+                    .error(R.drawable.profile_icon)
+                    .into(imgProfileIcon)
             }
         }
 
@@ -107,14 +111,15 @@ class MainActivity : AppCompatActivity() {
                 addPostAddBTN.setOnClickListener {
                     if (addPostTitle.text.toString() != "" && addPostDate.text.toString() != "" &&
                         addPostTime.text.toString() != "" && addPostDescription.text.toString() != "" &&
-                        addPostImage.drawable != resources.getDrawable(R.drawable.upload_area)) {
+                        imageUri != null) {
 
                         DatabaseManager.addPost(
-                            imageUri,
+                            imageUri!!,
                             addPostTitle.text.toString(),
                             addPostDate.text.toString(),
                             addPostTime.text.toString(),
-                            addPostDescription.text.toString())
+                            addPostDescription.text.toString()
+                        )
 
                         dialog.dismiss()
 
@@ -169,6 +174,9 @@ class MainActivity : AppCompatActivity() {
                 if (data != null) {
                     imageUri = data.data!!
                     addPostImage.setImageURI(imageUri)
+                }
+                else {
+                    imageUri = null
                 }
             }
         }

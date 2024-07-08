@@ -52,10 +52,9 @@ class Login : AppCompatActivity() {
 
         // Login button clicked
         btnLogin.setOnClickListener {
-
-            DatabaseManager.userExists(edtEMail.text.toString()) { exists ->
+            DatabaseManager.userExists(edtEMail.text.toString().lowercase()) { exists ->
                 if (exists) {
-                    DatabaseManager.getUser(edtEMail.text.toString()) { user ->
+                    DatabaseManager.getUser(edtEMail.text.toString().lowercase()) { user ->
                         if (user != null) {
                             if (user.password == edtPassword.text.toString() && edtEMail.text.toString() != "")
                             {

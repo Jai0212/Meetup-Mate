@@ -79,7 +79,6 @@ object DatabaseManager {
     }
 
     fun addPost(imageUri: Uri, addPostTitle: String, addPostDate: String, addPostTime: String, addPostDescription: String) {
-
         val imageRef = storageReference.child("images_posts/${imageUri.lastPathSegment}")
 
         imageRef.putFile(imageUri)
