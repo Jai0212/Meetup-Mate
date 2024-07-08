@@ -21,6 +21,10 @@ seamless user experience for planning and joining meetups.
 * **Responsive Design**: Optimized for various Android devices, ensuring a consistent experience across different screen sizes.
 * **Customizable Profile**: Users can personalize their profiles and manage their meetups effortlessly.
 
+<img width="300" alt="main_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/399c702c-20c5-4272-85e5-fc7fa1612581">
+
+<img width="300" alt="profile_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/cf4e1be9-2ddb-4196-b80c-88368a96359f">
+
 
 ## Technical Aspects
 * **Database**: Firebase Realtime Database to store user details such as username, email, password, posts, friends, etc.
@@ -55,6 +59,10 @@ All activity files are under **app/src/main/java/com/example/meetupmate**
 
 All layout and resource files are under **app/src/main/res**
 
+<img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c6332a8e-67fd-42a2-b61a-800c128591dd">
+<img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c28a90fd-b9f4-4d7f-9396-f4de08b03692">
+
+
 ## Acknowledgments
 I would like to thank Appetize.io thanks to which I was able to simulate my app.
 
@@ -65,4 +73,3 @@ I worked on this project alone and will not be actively working on this project 
 Author and Date  
 by Jai Joshi  
 Updated on 8th July, 2024
-
