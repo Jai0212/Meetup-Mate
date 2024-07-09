@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -69,6 +70,11 @@ class MainActivity : AppCompatActivity() {
 
         imgProfileIcon.setOnClickListener { view ->
             showProfileMenu(view)
+        }
+
+        val imgMessageIcon: ImageView = findViewById(R.id.imgMessageIcon)
+        imgMessageIcon.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ChatMain::class.java))
         }
     }
 

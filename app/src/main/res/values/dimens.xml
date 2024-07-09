@@ -4,4 +4,5 @@
     <dimen name="profile_default">72dp</dimen>
     <dimen name="ll_hexagon_margin_on_select">7dp</dimen>
     <dimen name="ll_hexagon_margin_default">10dp</dimen>
+    <dimen name="dialogBoxWidth">350dp</dimen>
 </resources>

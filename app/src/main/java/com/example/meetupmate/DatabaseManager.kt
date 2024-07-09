@@ -4,6 +4,8 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -109,7 +111,7 @@ object DatabaseManager {
         currUser = user
     }
 
-    fun getPostsForUser(email: String, callback: (List<Post>) -> Unit) {
+    fun getPostsForUser(email: String = currUser.email, callback: (List<Post>) -> Unit) {
         val userPostsRef = databaseReference.getReference(email.replace(".", ",")).child("posts")
 
         userPostsRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -532,5 +534,137 @@ object DatabaseManager {
             }
         }
         callback(false)
+    }
+
+    fun getPost(postImage: String, callback: (Post) -> Unit) {
+        val allPosts = mutableListOf<Post>()
+        var postFound = false
+
+        getPostsForUser { userPosts ->
+            allPosts.addAll(userPosts)
+
+            getAllPosts { otherPosts ->
+                val totalPosts = otherPosts.size
+                var postsProcessed = 0
+
+                if (totalPosts == 0) {
+                    // Check user posts if there are no other posts
+                    checkUserPosts(allPosts, postImage, callback)
+                } else {
+                    for (post in otherPosts) {
+                        hasJoinedPost(post) { hasJoined ->
+                            postsProcessed++
+
+                            if (hasJoined && postImage == post.image) {
+                                postFound = true
+                                callback(post)
+                            }
+
+                            // Check user posts only after all other posts are processed
+                            if (postsProcessed == totalPosts && !postFound) {
+                                checkUserPosts(allPosts, postImage, callback)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun checkUserPosts(userPosts: List<Post>, postImage: String, callback: (Post) -> Unit) {
+        for (post in userPosts) {
+            if (postImage == post.image) {
+                callback(post)
+                break
+            }
+        }
+    }
+
+    fun getPostID(post: Post, onComplete: (String?) -> Unit) {
+
+        val postsRef = databaseReference.getReference(post.creatorEmail.replace(".", ",")).child("posts")
+        var found = false
+
+        postsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    val postId = postSnapshot.key
+                    val postAttributes = postSnapshot.getValue(Post::class.java)
+
+                    if (postAttributes != null) {
+                        if (postAttributes.image == post.image) {
+                            onComplete(postId)
+                            found = true
+                            return
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Firebase", "Error getting data")
+                onComplete(null)
+            }
+        })
+
+        if (!found) {
+            onComplete(null)
+        }
+    }
+
+    fun addMessage(message: Message, post: Post) {
+        getPostID(post) { postID ->
+            if (postID != null) {
+                val messagesRef =
+                    databaseReference.getReference(post.creatorEmail.replace(".", ","))
+                        .child("posts")
+                        .child(postID)
+                        .child("messages")
+
+                val newMessageRef = messagesRef.push()
+                newMessageRef.setValue(message)
+
+                Log.i("DatabaseManager", "Message added to post with ID: $postID")
+            } else {
+                Log.i("PostID DatabaseManager", "Null Value of PostID")
+            }
+        }
+    }
+
+    fun getMessages(post: Post, onComplete: (List<Message>?) -> Unit) {
+        getPostID(post) { postID ->
+            if (postID != null) {
+                val messagesRef = databaseReference.getReference()
+                    .child(post.creatorEmail.replace(".", ","))
+                    .child("posts")
+                    .child(postID)
+                    .child("messages")
+
+                messagesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            val messages = mutableListOf<Message>()
+                            for (messageSnapshot in snapshot.children) {
+                                val message = messageSnapshot.getValue(Message::class.java)
+                                message?.let {
+                                    messages.add(it)
+                                }
+                            }
+                            onComplete(messages)
+                        } else {
+                            onComplete(emptyList())
+                            Log.d("DatabaseManager", "No Messages")
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        onComplete(emptyList())
+                        Log.e("DatabaseManager", "Error Getting Messages")
+                    }
+                })
+            } else {
+                onComplete(emptyList())
+                Log.e("PostID DatabaseManager", "Null Value of PostID")
+            }
+        }
     }
 }

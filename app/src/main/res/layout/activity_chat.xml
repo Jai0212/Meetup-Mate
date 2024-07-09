@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatMain"
+    android:background="@color/greyish">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tlChat"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#3D3D3D"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivChatImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/tester_image"
+            android:contentDescription="Group Icon"
+            app:shapeAppearanceOverlay="@style/Circular"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvChatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Group Name"
+            android:textSize="20sp"
+            android:layout_marginStart="32dp"/>
+
+        <ImageView
+            android:id="@+id/logoChat"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="Logo"
+            android:padding="2dp"
+            android:src="@drawable/only_logo" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvSendMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tlChat"
+        app:layout_constraintVertical_bias="0.01"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSendMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="7dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtChatMessageInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Type your message here"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/ivChatSend"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:contentDescription="Send Icon"
+                android:src="@drawable/send_icon" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

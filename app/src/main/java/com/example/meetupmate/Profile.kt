@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.view.MenuItem
 import android.view.View
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -33,6 +34,12 @@ class Profile : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // If logo clicked, go to main page
+        val logoProfile: ImageView = findViewById(R.id.logoProfile)
+        logoProfile.setOnClickListener {
+            startActivity(Intent(this@Profile, MainActivity::class.java))
         }
 
         val tlProfile: Toolbar = findViewById(R.id.tlProfile)

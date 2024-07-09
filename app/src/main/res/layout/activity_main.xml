@@ -50,7 +50,7 @@
                     android:layout_marginRight="7dp"
                     android:contentDescription="Message"
                     android:src="@drawable/message_icon"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/imgSearchIcon"

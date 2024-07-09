@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llMainChat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivMainChatImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/tester_image"
+        android:contentDescription="Group Icon"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeWidth="2dp"
+        android:padding="2dp"
+        app:strokeColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvMainChatName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group Name"
+        android:layout_marginStart="28dp"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:textColor="@color/blackish"/>
+
+</LinearLayout>

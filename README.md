@@ -17,6 +17,7 @@ seamless user experience for planning and joining meetups.
 
 ## Features
 * **User-Friendly Interface**: Easily create meetup posts and manage meetups with friends through an intuitive interface.
+* **Chatting Option**: Easily discuss the plan in your meetup group. You are automatically added once you join a meetup.
 * **Realtime Database**: Utilizes Firebase Realtime Database to store and synchronize user data including profiles, posts, and friends.
 * **Comprehensive Functionality**: Includes user authentication, friend management, and meetup joining capabilities.
 * **Responsive Design**: Optimized for various Android devices, ensuring a consistent experience across different screen sizes.
@@ -48,6 +49,8 @@ Join a meetup by clicking on the join button and see who else
 has joined by clicking on the respective button  
 
 Add your own meetup by clicking on your profile icon.  
+
+Click on the message icon to open chats. You are automatically added to a group once you join a meetup.
 
 Customize your profile and view all your meeetups and the meetups you have joined by opening your profile.  
 
