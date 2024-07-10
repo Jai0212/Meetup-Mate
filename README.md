@@ -23,15 +23,16 @@ seamless user experience for planning and joining meetups.
 * **Responsive Design**: Optimized for various Android devices, ensuring a consistent experience across different screen sizes.
 * **Customizable Profile**: Users can personalize their profiles and manage their meetups effortlessly.
 
-<img width="300" alt="main_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/399c702c-20c5-4272-85e5-fc7fa1612581">
-
+<img width="300" alt="main_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c7ad55a1-a8de-45dd-bfb7-73ad5e1c7695">
 <img width="300" alt="profile_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/cf4e1be9-2ddb-4196-b80c-88368a96359f">
-
 
 ## Technical Aspects
 * **Database**: Firebase Realtime Database to store user details such as username, email, password, posts, friends, etc.
 * **Languages**: Kotlin and XML (Android Studio)
 * **Hosting**: Appetize.io is used to virtually simulate the app
+
+<img width="300" alt="chat" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/a5aeb4d6-6c8b-4c8e-84c9-f444ecd4c007">
+<img width="300" alt="chats" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/165ed35e-8181-460a-9652-41f5204ac1ae">
 
 
 ## Usage
@@ -63,7 +64,7 @@ All activity files are under **app/src/main/java/com/example/meetupmate**
 
 All layout and resource files are under **app/src/main/res**
 
-<img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c6332a8e-67fd-42a2-b61a-800c128591dd">
+<img width="300" alt="initial_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c6332a8e-67fd-42a2-b61a-800c128591dd">
 <img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c28a90fd-b9f4-4d7f-9396-f4de08b03692">
 
 
