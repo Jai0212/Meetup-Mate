@@ -57,31 +57,38 @@ class Signup : AppCompatActivity() {
 
                 if (isValidEmail(edtEMail.text.toString().trim())) {
 
-                    DatabaseManager.userExists(edtEMail.text.toString().trim().lowercase()) { userExists->
+                    DatabaseManager.userExists(edtEMail.text.toString().trim().lowercase()) { userExists ->
                         if (userExists) {
                             showToast("E-mail Already In Use")
                             return@userExists
                         } else {
-                            val newUser = User(
-                                edtEMail.text.toString().trim().lowercase(),
-                                edtUsername.text.toString().trim(),
-                                edtPassword.text.toString().trim(),
-                                "")
+                            DatabaseManager.usernameExists(edtUsername.text.toString().trim()) { usernameExists ->
+                                if (usernameExists) {
+                                    showToast("Username Already Exists")
+                                    return@usernameExists
+                                } else {
+                                    val newUser = User(
+                                        edtEMail.text.toString().trim().lowercase(),
+                                        edtUsername.text.toString().trim(),
+                                        edtPassword.text.toString().trim(),
+                                        "")
 
-                            DatabaseManager.addNewUser(newUser, this)
-                            DatabaseManager.initCurrUser(newUser)
+                                    DatabaseManager.addNewUser(newUser, this)
+                                    DatabaseManager.initCurrUser(newUser)
 
-                            val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
-                            val editor: SharedPreferences.Editor = pref.edit()
-                            editor.putBoolean("flag", true)
-                            editor.putString("email", edtEMail.text.toString().trim().lowercase())
-                            editor.apply()
+                                    val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)
+                                    val editor: SharedPreferences.Editor = pref.edit()
+                                    editor.putBoolean("flag", true)
+                                    editor.putString("email", edtEMail.text.toString().trim().lowercase())
+                                    editor.apply()
 
-                            val intent = Intent(this@Signup, MainActivity::class.java)
-                            // removes signup from backstack
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                            finish()
+                                    val intent = Intent(this@Signup, MainActivity::class.java)
+                                    // removes signup from backstack
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            }
                         }
                     }
                 } else {

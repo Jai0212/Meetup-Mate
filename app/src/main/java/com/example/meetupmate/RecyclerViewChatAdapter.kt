@@ -23,6 +23,7 @@ class RecyclerViewChatAdapter(private var mData: MutableList<Message>, private v
         holder.tvChatMessageMessageLeft.text = item.message
         holder.tvChatMessageDateLeft.text = "${item.timestamp.date}, ${item.timestamp.time}"
 
+        // If current user sends message, message appears on right
         if (item.sender.email == DatabaseManager.currUser.email) {
             val view = LayoutInflater.from(holder.itemView.context).inflate(R.layout.chat_view_right, holder.clChatViewLeft, false)
 

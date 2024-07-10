@@ -17,14 +17,15 @@ seamless user experience for planning and joining meetups.
 
 ## Features
 * **User-Friendly Interface**: Easily create meetup posts and manage meetups with friends through an intuitive interface.
-* **Chatting Option**: Easily discuss the plan in your meetup group. You are automatically added once you join a meetup.
-* **Realtime Database**: Utilizes Firebase Realtime Database to store and synchronize user data including profiles, posts, and friends.
+* **Chatting Functionality**: Discuss plans in your meetup group effortlessly. You are automatically added to the chat once you join a meetup.
+* **Realtime Database**: Utilizes Firebase Realtime Database to store and synchronize user data including profiles, posts, chats, and friends.
 * **Comprehensive Functionality**: Includes user authentication, friend management, and meetup joining capabilities.
 * **Responsive Design**: Optimized for various Android devices, ensuring a consistent experience across different screen sizes.
 * **Customizable Profile**: Users can personalize their profiles and manage their meetups effortlessly.
 
 <img width="300" alt="main_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c7ad55a1-a8de-45dd-bfb7-73ad5e1c7695">
 <img width="300" alt="profile_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/cf4e1be9-2ddb-4196-b80c-88368a96359f">
+
 
 ## Technical Aspects
 * **Database**: Firebase Realtime Database to store user details such as username, email, password, posts, friends, etc.
@@ -65,7 +66,7 @@ All activity files are under **app/src/main/java/com/example/meetupmate**
 All layout and resource files are under **app/src/main/res**
 
 <img width="300" alt="initial_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c6332a8e-67fd-42a2-b61a-800c128591dd">
-<img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/c28a90fd-b9f4-4d7f-9396-f4de08b03692">
+<img width="300" alt="sign_up_page" src="https://github.com/Jai0212/Meetup-Mate/assets/86296165/44355efd-b9cf-435c-b12f-b6d9e637c494">
 
 
 ## Acknowledgments

@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
@@ -108,8 +107,6 @@ class Chat : AppCompatActivity() {
 
                 // If group title clicked
                 tvChatName.setOnClickListener {
-                    // TODO if title click, the post should pop up, also don't add join/leave button on that, see who else join add that also
-
                     val dialog = Dialog(this)
                     dialog.setContentView(R.layout.post_card_view)
 

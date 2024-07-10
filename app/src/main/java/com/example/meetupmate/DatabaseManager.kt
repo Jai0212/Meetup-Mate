@@ -528,12 +528,13 @@ object DatabaseManager {
     fun usernameExists(username: String, callback: (Boolean) -> Unit) {
         getAllUsers { users ->
             for (user in users) {
-                if (user.username == username) {
+                if (user.username.lowercase() == username.lowercase()) {
                     callback(true)
+                    return@getAllUsers
                 }
             }
+            callback(false)
         }
-        callback(false)
     }
 
     fun getPost(postImage: String, callback: (Post) -> Unit) {
