@@ -19,6 +19,7 @@ class Splash : AppCompatActivity() {
             insets
         }
 
+        // During splash screen, user is logged in automatically if he had previously signed in
         Handler().postDelayed(object : Runnable {
             override fun run() {
                 val pref = getSharedPreferences("isLoggedIn", MODE_PRIVATE)

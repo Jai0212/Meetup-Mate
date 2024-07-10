@@ -1,12 +1,9 @@
 package com.example.meetupmate
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +37,7 @@ class MainRight : Fragment(), RecyclerViewHexagonAdapter.OnHexagonClickListener 
         return view
     }
 
+    // If a particular user is clicked, only display his posts
     override fun onHexagonClick(item: User) {
         val fragment = fragmentManager?.findFragmentById(R.id.fMainLeft) as MainLeft
 

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+// To display posts, used on main page and profile page
 class MainLeft : Fragment(), RecyclerViewHexagonAdapter.OnHexagonClickListener {
 
     lateinit var rvPostsMainLeft: RecyclerView
